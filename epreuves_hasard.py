@@ -1,21 +1,13 @@
 import random as r
+from fonctions_utiles import *
 from time import sleep
 #Le module time sera utilisé pour mettre des pauses entre les affichage.
 #Pour rendre le jeu plus fluide.
 
-ESC = '\x1b'
-NORMAL = ESC + '[0m'
-RED    = ESC + '[31m'
-YELLOW = ESC + '[33m'
-GREEN  = ESC + '[32m'
-BLUE   = ESC + '[34m'
-PURPLE = ESC + '[35m'
-GRAS = "\033[1m"
-
 def bonneteau():
     L = ['A','B','C']
     n = 3
-    solution = ""
+
     message = (f"{GREEN}Bienvenue dans cette nouvelle épreuve!{NORMAL}\nIci, {GRAS}vous allez devoir choisir entre plusieurs bonneteaux{NORMAL} "
                f"sous l'un desquels se cache une {GRAS}{YELLOW}Clé{NORMAL}!\n{GREEN}J'espère que vous avez de la chance!{NORMAL}\n")
     print(message)
@@ -105,4 +97,4 @@ def epreuve_hasard():
     else:
         return jeu_lance_des()
 
-#epreuve_hasard()
+epreuve_hasard()
