@@ -20,3 +20,4 @@ def attente(message):
             print('.',end="")
         else:
             print('.')
+    sleep(0.8)

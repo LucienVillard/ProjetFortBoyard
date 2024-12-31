@@ -2,6 +2,7 @@ from fonctions_utiles import *
 from time import sleep
 import random as r
 
+
 Joueur = 0
 Maitre = 1
 
@@ -35,29 +36,46 @@ def affiche_grille(grille,message):
 
 
 
-def demande_position():
+def demande_position2():
     pos = "0,0"
     while (ord(pos[0]) < ord('1') or ord(pos[0]) >= ord('4')) or (ord(pos[2]) < ord('1') or ord(pos[2]) >= ord('4')) or pos[1] != ',' or len(pos) != 3:
-        #assure le format attendu
-        pos = input(f"Entrez la position ({GREEN}ligne{NORMAL},{GREEN}colonne{NORMAL}) entre "
-                    f"{GREEN}1{NORMAL} et {GREEN}3{NORMAL} (ex: 1,2) :")
+            #assure le format attendu
+            pos = input(f"Entrez la position ({GREEN}ligne{NORMAL},{GREEN}colonne{NORMAL}) entre "
+                        f"{GREEN}1{NORMAL} et {GREEN}3{NORMAL} (ex: 1,2) :")
     x, y = int(pos[0])-1, int(pos[2])-1
     return x,y
 
+def demande_position():
+    while True:
+        pos = input(f"Entrez la position ({GREEN}ligne{NORMAL},{GREEN}colonne{NORMAL}) entre "
+                    f"{GREEN}1{NORMAL} et {GREEN}3{NORMAL} (ex: 1,2) :")
+
+        #Il faut maintenant assurer que le format de l'entrée est: x,y
+        # Vérifie que la chaîne fait exactement 3 caractères
+        if len(pos) == 3 and pos[1] == ',':
+            # Vérifie que pos[0] et pos[2] sont entre '1' et '3' (pour éviter les indices qui n'existent pas)
+            if '1' <= pos[0] <= '3' and '1' <= pos[2] <= '3':
+                x, y = int(pos[0]), int(pos[2])
+                return x - 1, y - 1  # Retourne les indices
+            else:
+                print(f"Les nombres doivent être entre {GREEN}1{NORMAL} et {GREEN}3{NORMAL}.")
+        else:
+            print(f"Format invalide. Veuillez entrer une position sous la forme {GREEN}x,y{NORMAL}.")
 
 
 def init():
     grille = grille_vide()
-    for i in range(2):
+    i = 0
+    while i < 2:
         print(f"\n{BLUE}Bateau n°{i+1}{NORMAL}:")
 
         x, y = demande_position()
 
         if grille[x][y] == ' ':
             grille[x][y] = 'B'
+            i += 1
         else:
             print(f"Veuillez entrer des {GREEN}coordonées différentes{NORMAL} du {BLUE}bateau n°1{NORMAL}")
-    print(grille)
     return grille
 
 def init_maitre():
@@ -81,7 +99,7 @@ def tour(joueur, grille_tirs_joueur, grille_adversaire) :
 
     else:   # Tour du maitre
         x, y = r.randint(0,2), r.randint(0,2)
-        while grille_adversaire[x][y] != ' ' :
+        while grille_tirs_joueur[x][y] != ' ' :
             x, y = r.randint(0,2), r.randint(0,2)
         attente(f"Le maitre du jeu tire en {x+1}, {y+1}")
 
@@ -91,6 +109,8 @@ def tour(joueur, grille_tirs_joueur, grille_adversaire) :
     else:
         print(f"{BLUE}Dans l'eau...{NORMAL}\n")
         grille_tirs_joueur[x][y] = '.'
+
+    print("--------------------\n")
     return grille_tirs_joueur
 
 def gagne(grille_tirs_joueur):
@@ -131,6 +151,7 @@ def jeu_bataille_navale():
             win = True
         elif gagne(grille_tir_maitre):
             print(f"{RED}Le maitre a gagné...{NORMAL} Vous avez perdu.\n")
+            affiche_grille(grille_b_maitre, f"La {RED}grille{NORMAL} de votre {RED}adversaire{NORMAL} était :")
             win = False
 
         joueur = suiv(joueur)

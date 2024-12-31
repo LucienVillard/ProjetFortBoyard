@@ -55,8 +55,7 @@ def jeu_lance_des():
         print(f"Il vous reste {GREEN} {3-i} {NORMAL} essais.\n")
         input("Appuyez sur Entrée pour lancer vos dés.\n")    #permet d'attendre la touche entrée
 
-        print("Attente du resultat...")
-        sleep(2)
+        attente("Attente du resultat")
 
         tuple_resultats_j = (r.randint(1,6),r.randint(1,6)) #Resultats du joueur
         print(f"Vous avez obtenu un {BLUE}{tuple_resultats_j[0]} {NORMAL}et un {BLUE}{tuple_resultats_j[1]}{NORMAL}.\n")
@@ -69,8 +68,7 @@ def jeu_lance_des():
 
         sleep(2)
 
-        print(f"{RED}Le Maitre du jeu lance ses dés...{NORMAL}\n")
-        sleep(2)
+        attente(f"{RED}Le Maitre du jeu lance ses dés{NORMAL}")
 
         tuple_resultats_m = (r.randint(1,6),r.randint(1,6)) #Resultats du maitre du jeu
         print(f"Le Maitre du jeu a obtenu un {RED}{tuple_resultats_m[0]} {NORMAL}et un {RED}{tuple_resultats_m[1]}{NORMAL}.\n")
