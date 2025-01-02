@@ -11,7 +11,7 @@ PURPLE = ESC + '[35m'
 GRAS = "\033[1m"
 
 
-#Afficher ... après un message popur simuler une sorte chargement
+#Afficher "..." après un message popur simuler une sorte chargement
 def attente(message):
     print(message,end="")
     for i in range(3):

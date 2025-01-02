@@ -35,16 +35,6 @@ def affiche_grille(grille,message):
     print("-------------\n")
 
 
-
-def demande_position2():
-    pos = "0,0"
-    while (ord(pos[0]) < ord('1') or ord(pos[0]) >= ord('4')) or (ord(pos[2]) < ord('1') or ord(pos[2]) >= ord('4')) or pos[1] != ',' or len(pos) != 3:
-            #assure le format attendu
-            pos = input(f"Entrez la position ({GREEN}ligne{NORMAL},{GREEN}colonne{NORMAL}) entre "
-                        f"{GREEN}1{NORMAL} et {GREEN}3{NORMAL} (ex: 1,2) :")
-    x, y = int(pos[0])-1, int(pos[2])-1
-    return x,y
-
 def demande_position():
     while True:
         pos = input(f"Entrez la position ({GREEN}ligne{NORMAL},{GREEN}colonne{NORMAL}) entre "
