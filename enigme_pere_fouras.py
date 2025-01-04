@@ -13,6 +13,10 @@ def charger_enigmes(fichier):
 
 
 def enigme_pere_fouras():
+    print(f"{GREEN}Bienvenue{NORMAL} dans l'épreuve des {GREEN}enigmes du père Fouras{NORMAL} !\n"
+          f"Vous allez devoir trouver la {BLUE}solution{NORMAL} à une {BLUE}énigme{NORMAL} "
+          f"pour gagner une {GRAS}{YELLOW}clé{NORMAL}.\n"
+          f"Voici l'énigme :")
     L=[]
     essais=3
     for i in charger_enigmes("data/enigmesPF.json"):
@@ -20,7 +24,7 @@ def enigme_pere_fouras():
     x=random.randint(0,len(L)-1)
     question=L[x]["question"]
     reponse=L[x]["reponse"]
-    print(question)
+    print("\n"+question+"\n")
     while essais>0:
         rep=input("Entrez votre réponse : ")
         rep=rep.lower()
@@ -28,7 +32,7 @@ def enigme_pere_fouras():
         if rep==reponse:
             print(f"{GREEN}La réponse est correcte{NORMAL}")
             sleep(1)
-            print(f"{YELLOW}Vous gagnez une clé{NORMAL}")
+            print(f"{YELLOW}Vous gagnez une {GRAS}clé{NORMAL}")
             return True
         else:
             essais-=1

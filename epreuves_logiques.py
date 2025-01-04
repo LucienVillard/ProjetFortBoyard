@@ -137,14 +137,11 @@ def jeu_bataille_navale():
             tour(joueur, grille_tir_maitre, grille_b_joueur)
 
         if gagne(grille_tir_joueur):
-            print(f"{YELLOW}Vous avez gagné !{NORMAL}\n")
+            print(f"{YELLOW}Vous avez gagné  une {GRAS}clé!{NORMAL}\n")
             win = True
         elif gagne(grille_tir_maitre):
-            print(f"{RED}Le maitre a gagné...{NORMAL} Vous avez perdu.\n")
+            print(f"{RED}Le maitre du jeu a gagné...{NORMAL} Vous avez perdu.\n")
             affiche_grille(grille_b_maitre, f"La {RED}grille{NORMAL} de votre {RED}adversaire{NORMAL} était :")
             win = False
 
         joueur = suiv(joueur)
-
-
-jeu_bataille_navale()

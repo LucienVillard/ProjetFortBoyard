@@ -94,5 +94,3 @@ def epreuve_hasard():
         return bonneteau()
     else:
         return jeu_lance_des()
-
-epreuve_hasard()

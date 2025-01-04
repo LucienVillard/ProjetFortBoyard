@@ -34,54 +34,8 @@ def resoudre_equation_lineaire():
         res = str(res)
     else:
         res = str(res)
-    print(res)
     return a, b, res
 
-def est_entier(chaine):
-    #Verif si chaine est entier (pour verifier les input où on attend un entier)
-    if len(chaine) == 0:
-        return False
-    elif chaine[0] == '-':  # Vérifie le signe négatif
-        chaine = chaine[1:]  # Ignore le signe pour la vérification
-
-    if len(chaine) != 0:
-        for i in chaine:
-            if '0' > i or '9' < i:
-                return False
-    else:
-        return False
-    return True
-
-def est_float(chaine):
-    if chaine[0] == '-':  # Vérifie le signe négatif
-        chaine = chaine[1:]  # Ignore le signe pour la vérification
-
-    if '.' in chaine:  # Vérifie la présence d'un point
-        parts = chaine.split('.')
-        if len(parts) != 2:  # Un nombre flottant doit avoir une seule partie décimale
-            return False
-        # Vérifie que les deux parties sont des entiers (entière ou décimale)
-        partie_entiere, partie_decimale = parts
-        if est_entier(partie_entiere) and est_entier(partie_decimale):
-            return True
-        else:
-            return False
-    else:
-        return False
-
-def est_fraction(chaine):
-    if chaine[0] == '-':  # Vérifie le signe négatif
-        chaine = chaine[1:]  # Ignore le signe pour la vérification
-
-    if '/' not in chaine:
-        return False
-    parties = chaine.split('/')
-
-    if len(parties) != 2:
-        return False
-    elif not est_entier(parties[0]) or not est_entier(parties[1]):
-        return False
-    return True
 
 def epreuve_math_equation():
     #implementation de l'autre fonction
@@ -139,10 +93,10 @@ def roulette_maths():
 
     y = int(y)
     if y == res:
-        print(f"{GREEN}Bonne réponse ! Vous gagnez une {GRAS}{YELLOW}clé{NORMAL}.")
+        print(f"\n{GREEN}Bonne réponse ! Vous gagnez une {GRAS}{YELLOW}clé{NORMAL}.\n")
         return True
     else:
-        print(f"{RED}Mauvaise réponse!{NORMAL}")
+        print(f"\n{RED}Mauvaise réponse!{NORMAL}\n")
         return False
 
 def epreuve_maths():
@@ -153,4 +107,3 @@ def epreuve_maths():
         return epreuve_math_equation()
     else:
         return roulette_maths()
-epreuve_maths()
