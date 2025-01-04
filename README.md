@@ -2,7 +2,7 @@
 
   o Titre du Projet
 
-  o Contributeurs : Villard Lucien, Davi Maxime
+  o Contributeurs : Villard Lucien, David Maxime
 
   o Description : Créer un jeu inspiré de l'émission Fort Boyard avec 4 épreuves jouable en équipe de 1 à 3 joueurs.
 
