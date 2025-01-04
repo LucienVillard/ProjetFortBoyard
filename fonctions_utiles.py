@@ -158,7 +158,7 @@ def choisir_joueur(equipe):
 
 
 def sauvegarde(joueur):
-    with open("historique.txt", 'r', encoding='utf-8') as f:
+    with open("data/historique.txt", 'r', encoding='utf-8') as f:
         dico_donnee = {}
         for ligne in f:
             if len(ligne) != 0: #saute les lignes vides
@@ -170,7 +170,7 @@ def sauvegarde(joueur):
     else:
         dico_donnee[joueur["nom"]] += joueur["cles_gagnee"]
 
-    with open("historique.txt", 'w', encoding='utf-8') as f:
+    with open("data/historique.txt", 'w', encoding='utf-8') as f:
         for nom,nb_cle in dico_donnee.items():
             f.write(f"{nom}:{nb_cle}\n")
 
